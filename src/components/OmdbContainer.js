@@ -45,7 +45,8 @@ function ProductTable(props) {
 class OmdbContainer extends Component {
   state = {
     result: [],
-    search: ""
+    search: "",
+    ascending: true
   };
 
   // When this component mounts, search for the movie "The Matrix"
@@ -67,7 +68,10 @@ class OmdbContainer extends Component {
 
 
 
-
+ employeeFilterOnChange = (event) => {
+   console.log ("We Searched!", event.target.value)
+   
+ }
 
 
 
@@ -77,12 +81,35 @@ class OmdbContainer extends Component {
     this.setState({
       [name]: value
     });
+ 
+    const foundEmployee=Names.results.filter(person=> { 
+      return person.name.first.toLowerCase().includes(value.toLowerCase()) || 
+      person.name.last.toLowerCase().includes(value.toLowerCase()) 
+      
+    })
+    this.setState({
+      result: foundEmployee
+    })
   };
 
   // When the form is submitted, search the OMDB API for the value of `this.state.search`
   handleFormSubmit = event => {
     event.preventDefault();
-    this.searchMovies(this.state.search);
+     const sortedEmployees =  this.state.result.sort((a,b)=> {
+          return this.state.ascending ?  a.name.first.localeCompare(b.name.first) : b.name.first.localeCompare(a.name.first)
+        })
+        if (this.state.ascending){
+          this.setState({
+            result: sortedEmployees,
+            ascending: false
+          })
+        }else{
+          this.setState({
+            result: sortedEmployees,
+            ascending: true
+          })
+        }
+      
   };
 
   render() {
@@ -92,7 +119,7 @@ class OmdbContainer extends Component {
    
         <Row>
           <Col size="md-12">
-            <Table result={this.state.result}/>
+            <Table result={this.state.result} search={this.state.search} handleInputChange={this.handleInputChange} handleFormSubmit={this.handleFormSubmit}/>
           </Col>
          {/*  <Col size="md-4">
             <Card heading="Search">

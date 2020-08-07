@@ -8,7 +8,7 @@ function Jumbotron() {
 <div className="jumbotron jumbotron-fluid">
   <div className="container">
     <h1 className="display-4 Jumbo">Employee Directory</h1>
-    <p className="lead Jumbo">Click on Carrots to filter by heading or use the search box to narrow your results.</p>
+    <p className="lead Jumbo">Click on Name to sort by person's name or use the search box to narrow your results.</p>
   </div>
 </div>
   );
