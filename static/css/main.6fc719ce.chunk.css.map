@@ -1,0 +1,1 @@
+{"version":3,"sources":["style.css"],"names":[],"mappings":"AAAA,WACE,eAAgB,CAChB,2BAA4B,CAC5B,qBAAsB,CACtB,UAAY,CACZ,iBACF","file":"main.6fc719ce.chunk.css","sourcesContent":[".jumbotron {\r\n  margin-bottom: 0;\r\n  border-bottom: 3px solid red;\r\n  background-color: navy;\r\n  color: white;\r\n  text-align: center;\r\n}\r\n"]}
